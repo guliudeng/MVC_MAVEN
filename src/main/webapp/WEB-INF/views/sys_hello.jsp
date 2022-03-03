@@ -14,7 +14,8 @@
 
 </head>
 <body>
- <h1>欢迎回来</h1>
+ <h1>欢迎回来
+     <% Object user = session.getAttribute("user");%></h1>
 <button id="btn" name="btn" onclick="qry()">查询用户信息</button>
  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
  <script type="text/javascript">

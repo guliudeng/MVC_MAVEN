@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-//@RequestMapping("/system/")
+
 @Controller
 public class UserController {
     @Autowired()
@@ -35,7 +35,8 @@ public class UserController {
         BsUser bsUser = userService.qryByNameAndPassword(username, password);
         if (null !=bsUser) {
             System.out.println("登录成功");
-            model.setViewName("sys_hello");
+            request.getSession().setAttribute("user",bsUser);
+            model.setViewName("login");
         }
         return model;
     }

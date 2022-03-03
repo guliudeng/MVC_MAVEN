@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>login</title>
-
 </head>
 <body>
 <form action="<c:url value="/login"/>" method="post">
@@ -21,5 +20,6 @@
 </form>
 <a href="${pageContext.request.contextPath}/regist">注册</a>
 
+<% request.getSession().getAttribute("user");%>
 </body>
 </html>
