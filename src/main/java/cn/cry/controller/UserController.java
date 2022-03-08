@@ -22,6 +22,7 @@ public class UserController {
     @RequestMapping("hello")
     public ModelAndView hello(ModelAndView model){
         model.setViewName("sys_hello");
+        model.addObject("k1","value");
         return model;
     }
     @RequestMapping("login")

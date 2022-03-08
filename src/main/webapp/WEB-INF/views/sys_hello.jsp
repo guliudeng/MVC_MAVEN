@@ -14,6 +14,7 @@
 
 </head>
 <body>
+${k1}
  <h1>欢迎回来
      <% Object user = session.getAttribute("user");%></h1>
 <button id="btn" name="btn" onclick="qry()">查询用户信息</button>

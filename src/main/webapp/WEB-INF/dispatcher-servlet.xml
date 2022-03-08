@@ -28,6 +28,7 @@
     </bean>
 <!--    自动扫描装配mvc控制分发器-->
     <context:component-scan base-package="cn.cry.controller"></context:component-scan>
+
 <!--    配置拦截器-->
 <!--    <mvc:interceptors>-->
 <!--        <mvc:interceptor>-->
