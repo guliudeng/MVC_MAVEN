@@ -2,7 +2,7 @@
     user-select: none;
 }
 body{
-    background: url("../img/login_bg.png") no-repeat;
+    background: url("/MVC_MAVEN/static/images/login_bg.png") no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }

@@ -1,4 +1,4 @@
-package cn.cry.bo;
+package cn.cry.bo.user;
 
 import lombok.Data;
 

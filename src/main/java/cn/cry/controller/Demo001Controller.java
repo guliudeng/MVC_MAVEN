@@ -1,12 +1,11 @@
 package cn.cry.controller;
 
-import cn.cry.bo.TestUserBO;
+import cn.cry.bo.user.TestUserBO;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import sun.security.pkcs11.P11Util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,5 +67,15 @@ public class Demo001Controller {
         String jsonString = JSONObject.toJSONString(userBO);
         model.addAttribute("user",jsonString);
         return "demo-test01";
+    }
+
+    /**
+     * 访问登录-cry界面
+     * @return
+     */
+    @RequestMapping("loginCry")
+    public String login2(){
+        System.out.println("访问登录-2页面");
+        return "login-2";
     }
 }
