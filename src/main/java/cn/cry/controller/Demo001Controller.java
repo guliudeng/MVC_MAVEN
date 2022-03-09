@@ -28,7 +28,10 @@ public class Demo001Controller {
 
     /**
      * 接收请求，响应参数
-     * 直接从请求参数中获取
+     * 直接从请求参数中获取,
+     * MVC可以返回model，
+     * 也可以返回ModelAndView,如果返回modelAndView，需要将setModel和View
+     * 也可以返回String ，MVC默认将返回值看出视图，交由视图解析器拼上前缀和后缀返回视图
      * @param request
      * @param response
      * @param model
