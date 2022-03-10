@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 </head>
 <body>
+<p>
+    ${msg}
+</p>
 <form action="${pageContext.request.contextPath}/loginIn" method="post" class="login">
     <input type="text" name="userName" placeholder="用户名"><br>
     <input type="password" name="password" placeholder="密 码"><br>

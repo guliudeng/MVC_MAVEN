@@ -5,17 +5,47 @@ import lombok.Data;
 @Data
 public class BsUser {
     /**
-    * 主键
-    */
-    private Integer id;
+     * 主键id
+     */
+    private Integer userId;
 
     /**
-    * 姓名
-    */
+     * 用户名称
+     */
     private String userName;
 
     /**
-    * 密码
-    */
+     * 密码
+     */
     private String password;
+
+    /**
+     * 电话
+     */
+    private String phone;
+
+    /**
+     * 性别
+     */
+    private String sex;
+
+    /**
+     * 地址
+     */
+    private String address;
+
+    /**
+     * 店铺编码，只有商家才有值
+     */
+    private String shopCode;
+
+    /**
+     * 创建时间
+     */
+    private String createTime;
+
+    /**
+     * 删除标识
+     */
+    private String deleteFlag;
 }
