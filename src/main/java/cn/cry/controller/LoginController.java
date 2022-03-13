@@ -4,16 +4,17 @@ import cn.cry.bo.user.LoginUserInfoBO;
 import cn.cry.po.BsUser;
 import cn.cry.service.UserService;
 import com.alibaba.fastjson.JSONObject;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * 登录注册controller
@@ -23,6 +24,57 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
     @Autowired
     private UserService userService;
+
+    /**
+     *访问登录页面
+     * @return
+     */
+    @RequestMapping("login")
+    public String login(){
+       return "login" ;
+    }
+
+    /**
+     * 访问注册页面
+     * @return
+     */
+    @RequestMapping("regist")
+    public String regist(){
+        return "regist" ;
+    }
+
+    /**
+     * 注册操作处理
+     * @param user
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    @RequestMapping("registIn")
+    public ModelAndView regist(LoginUserInfoBO user, HttpServletRequest request,
+                               HttpServletResponse response,ModelAndView modelAndView) throws IOException {
+        if (StringUtils.isEmpty(user.getPassword())||StringUtils.isEmpty(user.getUserName())) {
+            modelAndView.addObject("msg","用户名密码不能为空");
+            modelAndView.setViewName("regist");
+            return modelAndView;
+        }
+        BsUser bsUser = userService.qryByUserName(user.getUserName());
+        if (bsUser != null) {
+            modelAndView.addObject("msg","用户名已存在");
+            modelAndView.setViewName("regist");
+            return modelAndView;
+        }
+        BsUser po = new BsUser();
+        po.setUserName(user.getUserName());
+        po.setPassword(user.getPassword());
+        int i = userService.addUser(po);
+        if (i>0) {
+            //response.getWriter().write("注册成功，3秒后返登录页面！");
+           //response.setHeader("refresh","3;url="+request.getContextPath()+"/login");
+            modelAndView.setViewName("login");
+        }
+       return modelAndView;
+    }
     /**
      * 登录表单提交处理器
      */
@@ -30,7 +82,7 @@ public class LoginController {
     public String login(LoginUserInfoBO userInfoBO, Model model, HttpServletRequest request){
         if (userInfoBO==null) {
             model.addAttribute("msg","");
-            return "login-2";
+            return "login";
         }
         System.out.println("登录入参--"+ JSONObject.toJSONString(userInfoBO));
         BsUser bsUser = userService.qryByNameAndPassword(userInfoBO.getUserName(), userInfoBO.getPassword());
@@ -42,7 +94,7 @@ public class LoginController {
             //登录失败将提示信息写道模型数据里，给JSP页面获取渲染
             model.addAttribute("msg","登陆失败，用户名密码不正确");
         }
-        return "login-2";
+        return "login";
     }
 
 }
