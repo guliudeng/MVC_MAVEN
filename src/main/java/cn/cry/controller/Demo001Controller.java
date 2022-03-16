@@ -76,6 +76,6 @@ public class Demo001Controller {
     @RequestMapping("loginCry")
     public String login2(){
         System.out.println("访问登录-2页面");
-        return "login-2";
+        return "/WEB-INF/views/login.jsp";
     }
 }
