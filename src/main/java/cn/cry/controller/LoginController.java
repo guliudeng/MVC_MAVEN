@@ -1,6 +1,7 @@
 package cn.cry.controller;
 
 import cn.cry.bo.user.LoginUserInfoBO;
+import cn.cry.bo.user.RegistReqBO;
 import cn.cry.po.BsUser;
 import cn.cry.service.UserService;
 import com.alibaba.fastjson.JSONObject;
@@ -51,8 +52,9 @@ public class LoginController {
      * @throws IOException
      */
     @RequestMapping("registIn")
-    public ModelAndView regist(LoginUserInfoBO user, HttpServletRequest request,
-                               HttpServletResponse response,ModelAndView modelAndView) throws IOException {
+    public ModelAndView regist(RegistReqBO user, HttpServletRequest request,
+                               HttpServletResponse response, ModelAndView modelAndView) throws IOException {
+        System.out.println("用户注册入参="+JSONObject.toJSONString(user));
         if (StringUtils.isEmpty(user.getPassword())||StringUtils.isEmpty(user.getUserName())) {
             modelAndView.addObject("msg","用户名密码不能为空");
             modelAndView.setViewName("regist");
@@ -67,6 +69,7 @@ public class LoginController {
         BsUser po = new BsUser();
         po.setUserName(user.getUserName());
         po.setPassword(user.getPassword());
+        po.setRole(user.getRole());
         int i = userService.addUser(po);
         if (i>0) {
             //response.getWriter().write("注册成功，3秒后返登录页面！");

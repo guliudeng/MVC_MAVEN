@@ -48,4 +48,6 @@ public class BsUser {
      * 删除标识
      */
     private String deleteFlag;
+
+    private String role;
 }

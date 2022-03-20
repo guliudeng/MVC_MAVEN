@@ -13,10 +13,12 @@
     <result column="shop_code" jdbcType="VARCHAR" property="shopCode" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    user_id, user_name, `password`, phone, sex, address, shop_code, create_time, delete_flag
+    user_id, user_name, `password`, phone, sex, address, shop_code, create_time, delete_flag, 
+    `role`
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -34,10 +36,12 @@
     <!--@mbg.generated-->
     insert into bs_user (user_name, `password`, phone, 
       sex, address, shop_code, 
-      create_time, delete_flag)
+      create_time, delete_flag, `role`
+      )
     values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{shopCode,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=VARCHAR})
+      #{createTime,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="cn.cry.po.BsUser" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -67,6 +71,9 @@
       <if test="deleteFlag != null">
         delete_flag,
       </if>
+      <if test="role != null">
+        `role`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userName != null">
@@ -92,6 +99,9 @@
       </if>
       <if test="deleteFlag != null">
         #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -123,6 +133,9 @@
       <if test="deleteFlag != null">
         delete_flag = #{deleteFlag,jdbcType=VARCHAR},
       </if>
+      <if test="role != null">
+        `role` = #{role,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
@@ -136,7 +149,8 @@
       address = #{address,jdbcType=VARCHAR},
       shop_code = #{shopCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR},
-      delete_flag = #{deleteFlag,jdbcType=VARCHAR}
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <select id="selectByUserName" resultMap="BaseResultMap">
