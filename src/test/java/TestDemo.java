@@ -1,3 +1,4 @@
+import cn.cry.utils.TenantCodeUtils;
 import org.junit.Test;
 
 public class TestDemo {
@@ -8,5 +9,13 @@ public class TestDemo {
         System.out.println(substring);
         String substring1 = aa.substring(0, 8);
         System.out.println(substring1);
+    }
+    @Test
+    public void test02(){
+        String aa = "谷killer";
+        String pinYin = TenantCodeUtils.getHanziPinYin(aa);
+        System.out.println(pinYin);
+        String initials = TenantCodeUtils.getHanziInitials(aa);
+        System.out.println(initials);
     }
 }
