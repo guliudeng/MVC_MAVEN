@@ -13,7 +13,7 @@ public class DateUtils {
      * 格式化当前时间
      * @return
      */
-    public String timeForm(){
+    public static String timeForm(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(stf);
         return  simpleDateFormat.format(new Date());
     }

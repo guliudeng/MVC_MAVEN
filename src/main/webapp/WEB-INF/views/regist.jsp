@@ -26,7 +26,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
-                            <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"><p><font color="red">${msg}</font></p>
+                            <input type="text" name="userName" id="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" onblur="isExist()"><p><font color="red">${msg}</font></p>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -78,6 +78,23 @@
         //因此你需要在相应的地方，执行下述方法来进行渲染
         form.render();
     });
+</script>
+<script>
+    function isExist() {
+        var $ = layui.jquery
+        $.ajax({
+            url:`${pageContext.request.contextPath}/qryUser`,
+            type:"POST",
+            dataType:"json",
+            data:{"userName":document.getElementById("userName").value},
+            success:function (data) {
+                alert("用户名"+data.userName+"已存在")
+            },
+            error:function () {
+
+            }
+        })
+    }
 </script>
 <%--<script>--%>
 <%--    layui.use(['layer', 'element', 'form', 'layedit'], function() {--%>

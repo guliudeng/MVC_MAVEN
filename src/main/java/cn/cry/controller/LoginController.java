@@ -2,8 +2,11 @@ package cn.cry.controller;
 
 import cn.cry.bo.user.LoginUserInfoBO;
 import cn.cry.bo.user.RegistReqBO;
+import cn.cry.constant.RoleConstant;
 import cn.cry.po.BsUser;
 import cn.cry.service.UserService;
+import cn.cry.utils.DateUtils;
+import cn.cry.utils.TenantCodeUtils;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +48,14 @@ public class LoginController {
     }
 
     /**
+     * 管理员主页
+     * @return
+     */
+    @RequestMapping("adminIndex")
+    public String adminIndex(){
+        return "admin_index" ;
+    }
+    /**
      * 注册操作处理
      * @param user
      * @param request
@@ -70,6 +81,12 @@ public class LoginController {
         po.setUserName(user.getUserName());
         po.setPassword(user.getPassword());
         po.setRole(user.getRole());
+        po.setSex(user.getSex());
+        po.setCreateTime(DateUtils.timeForm());
+        if (RoleConstant.ADMIN_ROLE.equals(user.getRole())) {
+            String tenantCode = TenantCodeUtils.getHanziInitials(user.getUserName());
+            po.setShopCode(tenantCode == null?user.getUserName() : tenantCode);
+        }
         int i = userService.addUser(po);
         if (i>0) {
             //response.getWriter().write("注册成功，3秒后返登录页面！");
@@ -99,5 +116,6 @@ public class LoginController {
         }
         return "login";
     }
+
 
 }
