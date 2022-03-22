@@ -48,6 +48,14 @@ public class LoginController {
     }
 
     /**
+     * 管理员主页
+     * @return
+     */
+    @RequestMapping("adminIndex")
+    public String adminIndex(){
+        return "admin_index" ;
+    }
+    /**
      * 注册操作处理
      * @param user
      * @param request
