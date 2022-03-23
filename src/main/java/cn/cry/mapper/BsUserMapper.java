@@ -2,6 +2,8 @@ package cn.cry.mapper;
 
 import cn.cry.po.BsUser;import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface BsUserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -18,4 +20,6 @@ public interface BsUserMapper {
     BsUser selectByUserName(String username);
 
     BsUser qryNameAndPassword(@Param("username") String username, @Param("password") String password);
+
+    List<BsUser> selectUserList();
 }

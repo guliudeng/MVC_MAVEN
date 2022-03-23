@@ -109,7 +109,7 @@ public class LoginController {
         if (bsUser != null) {
             //登录成功，将用户信息存到session域中,只要key和session注解上设置的一致，就会将值写入session域中
             model.addAttribute("userInfo",userInfoBO);
-            return "forward:/index.jsp";
+            return "forward:/adminIndex";
         }else {
             //登录失败将提示信息写道模型数据里，给JSP页面获取渲染
             model.addAttribute("msg","登陆失败，用户名密码不正确");

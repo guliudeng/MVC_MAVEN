@@ -1,12 +1,15 @@
 package cn.cry.service.imp;
 
+import cn.cry.bo.base.RspList;
 import cn.cry.mapper.BsUserMapper;
 import cn.cry.po.BsUser;
 import cn.cry.service.UserService;
+import cn.cry.utils.BaseRspUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -27,5 +30,14 @@ public class UserServiceImp implements UserService {
     @Override
     public BsUser qryByNameAndPassword(String username, String password) {
         return userMapper.qryNameAndPassword(username,password);
+    }
+
+    @Override
+    public RspList qryUserList() {
+        List<BsUser> userList = userMapper.selectUserList();
+        if (null != userList && userList.size()>0) {
+            return BaseRspUtils.createSuccessRspList(userList);
+        }
+        return BaseRspUtils.createErrorRspList("未查询到数据");
     }
 }

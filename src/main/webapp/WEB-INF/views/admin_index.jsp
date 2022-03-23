@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 管理界面大布局示例 - Layui</title>
+    <title>管理员界面</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="/MVC_MAVEN/static/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui-v2.6.8/layui/css/layui.css"  media="all">
     <style>
         /* 移动端 */
         @media screen and (max-width: 768px) {
@@ -33,38 +33,18 @@
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
-        <!-- 头部区域（可配合layui 已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <!-- 移动端显示 -->
-            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
-                <i class="layui-icon layui-icon-spread-left"></i>
-            </li>
-
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 1</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">nav groups</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">menu 11</a></dd>
-                    <dd><a href="">menu 22</a></dd>
-                    <dd><a href="">menu 33</a></dd>
-                </dl>
-            </li>
-
-
-        </ul>
+        <div class="layui-logo layui-hide-xs layui-bg-black">后台管理</div>
+        <%--        用户信息--%>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                 <a href="javascript:;">
                     <img src="${pageContext.request.contextPath}/static/images/login_bg.png" class="layui-nav-img">
-                    tester
+                    ${sessionScope.userInfo.userName}
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">Your Profile</a></dd>
-                    <dd><a href="">Settings</a></dd>
-                    <dd><a href="">Sign out</a></dd>
+                    <dd><a href="">个人信息</a></dd>
+                    <dd><a href="">设置</a></dd>
+                    <dd><a href="">注销</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -79,8 +59,10 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">menu group 1</a>
+                <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" >商铺管理</a></li>
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">订单中心</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">menu 1</a></dd>
                         <dd><a href="javascript:;">menu 2</a></dd>
@@ -89,15 +71,14 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
+                    <a href="javascript:;">菜单管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">list 1</a></dd>
                         <dd><a href="javascript:;">list 2</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">click menu item</a></li>
-                <li class="layui-nav-item"><a href="">the links</a></li>
+
             </ul>
         </div>
     </div>
@@ -106,7 +87,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             内容主体区域
-
+            <iframe id="option" name="option" src="${pageContext.request.contextPath}/adminUserManage" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="50%"></iframe>
             <br><br>
 
             <blockquote class="layui-elem-quote layui-text">
@@ -124,7 +105,6 @@
                 </ul>
             </blockquote>
 
-            <a href="/doc/element/layout.html#admin" target="_blank" class="layui-btn">查看该布局代码</a>
             <br><br><br>
 
             <div class="layui-card layui-panel">
@@ -147,7 +127,7 @@
         底部固定区域
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/static/layui/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
 <script>
     //JS
     layui.use(['element', 'layer', 'util'], function(){
@@ -189,73 +169,4 @@
 </script>
 </body>
 </html>
-
-<%--<html>
-<head>
-    <meta charset="utf-8">
-    <title>管理员界面</title>
-    <link rel="stylesheet" type="text/css" href="/MVC_MAVEN/static/layui/css/layui.css" media="all">
-    <script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
-</head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <!--1.头部区域-->
-    <div class="layui-header">
-        <div class="layui-logo">后台管理</div>
-        <ul class="layui-nav layui-layout-right" lay-filter="" >
-            <li class="layui-nav-item">
-                <a href="">
-                    <img src="/MVC_MAVEN/static/images/login_bg.png" class="layui-nav-img">
-                    admin
-                </a>
-                <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                    <dd><a href="">个人信息</a></dd>
-                    <dd><a href="">修改个人信息</a></dd>
-                    <dd><a href="">注销</a></dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
-&lt;%&ndash;    侧边导航栏&ndash;%&gt;
-    <!--2.左侧导航-->
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item leftdaohang" data-url="jiaose.html" mytitle="人员管理"><a>人员管理</a></li>
-                <li class="layui-nav-item leftdaohang" data-url="zhanghao.html" mytitle="商铺管理"><a>商铺管理</a></li>
-            </ul>
-        </div>
-    </div>
-    <!--3.右侧主体内容区-->
-    <div class="layui-body">
-        <!--tabs标签-->
-        <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true">
-            <ul class="layui-tab-title">
-                <!--   <li class="layui-this">角色管理</li>-->
-            </ul>
-            <div class="layui-tab-content" style="height: 150px;">
-                <div class="layui-tab-item layui-show">
-                  1. 我个人比较喜欢卡片风格的，所以你发现又是以卡片的风格举例
-                  2. 删除功能适用于所有风格
-                </div>
-                <div class="layui-tab-item">
-                    <iframe  style="width: 100%;height: 100%;" scrolling="no" src="jiaose.html" ></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
-<script>
-    //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-        var element = layui.element;
-            element.init();
-        //…
-    });
-</script>
-</html>--%>
-
 
