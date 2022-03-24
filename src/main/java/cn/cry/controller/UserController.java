@@ -1,5 +1,6 @@
 package cn.cry.controller;
 
+import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
 import cn.cry.mapper.BsUserMapper;
 import cn.cry.po.BsUser;
@@ -8,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -33,11 +35,19 @@ public class UserController {
      * 查询用户列表控制器
      * @return
      */
-    @RequestMapping("qryUserList")
+    @RequestMapping(value = "qryUserList" ,produces = "text/html; charset=utf-8")
     @ResponseBody
-    public String qryUserList() {
-        RspList rspList = userService.qryUserList();
-        System.out.println(rspList);
+    public String qryUserList(@RequestParam("page") int page,@RequestParam("limit") int limit) {
+        RspList rspList = userService.qryUserList(page,limit);
+        System.out.println("查询用户响应结果="+rspList);
         return JSONObject.toJSONString(rspList);
+    }
+
+    @RequestMapping(value = "deleteUser" ,produces = "text/html; charset=utf-8")
+    @ResponseBody
+    public String deleteUser(@RequestParam("userId") int userId) {
+        Rsp rsp = userService.deleteUser(userId);
+        System.out.println("删除用户响应结果="+rsp);
+        return JSONObject.toJSONString(rsp);
     }
 }

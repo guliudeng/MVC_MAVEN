@@ -18,4 +18,5 @@ public class TestDemo {
         String initials = TenantCodeUtils.getHanziInitials(aa);
         System.out.println(initials);
     }
+
 }

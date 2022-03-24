@@ -1,5 +1,6 @@
 package cn.cry.service.imp;
 
+import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
 import cn.cry.mapper.BsUserMapper;
 import cn.cry.po.BsUser;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -33,11 +35,29 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public RspList qryUserList() {
+    public RspList qryUserList(Integer page,Integer limit) {
         List<BsUser> userList = userMapper.selectUserList();
         if (null != userList && userList.size()>0) {
-            return BaseRspUtils.createSuccessRspList(userList);
+            List<BsUser> pageList = userList.stream().skip(limit * (page - 1)).limit(limit).collect(Collectors.toList());
+            return BaseRspUtils.createSuccessRspList(pageList,userList.size());
         }
         return BaseRspUtils.createErrorRspList("未查询到数据");
+    }
+
+    /**
+     * 根据用户id删除用户--软删除
+     * @param userId
+     * @return
+     */
+    @Override
+    public Rsp deleteUser(Integer userId) {
+        BsUser bsUser = new BsUser();
+        bsUser.setUserId(userId);
+        bsUser.setDeleteFlag("1");
+        int i = userMapper.updateByPrimaryKeySelective(bsUser);
+        if (i>0) {
+            return BaseRspUtils.createSuccessRsp("删除用户成功");
+        }
+        return BaseRspUtils.createErrorRsp("删除失败");
     }
 }

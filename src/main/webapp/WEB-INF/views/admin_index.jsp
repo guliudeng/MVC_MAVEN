@@ -87,8 +87,8 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             内容主体区域
-            <iframe id="option" name="option" src="${pageContext.request.contextPath}/adminUserManage" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="50%"></iframe>
-            <br><br>
+            <iframe id="option" name="option" src="" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
+            <%--<br><br>
 
             <blockquote class="layui-elem-quote layui-text">
                 <ul>
@@ -115,7 +115,7 @@
                     充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>你还真滑到了底部呀
                 </div>
             </div>
-            <br><br>
+            <br><br>--%>
 
 
 
@@ -155,7 +155,13 @@
                 });
             }
         });
-
+        //路由映射,点击菜单将菜单所对应的路由传给iframe
+        $(function () {
+            $('.layui-nav-item a').on("click",function () {
+                var address =$(this).attr("href");
+                $("iframe").attr("src",address);
+            })
+        })
     });
 </script>
 <script>
