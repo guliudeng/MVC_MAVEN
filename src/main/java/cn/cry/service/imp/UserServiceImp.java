@@ -2,10 +2,13 @@ package cn.cry.service.imp;
 
 import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
+import cn.cry.bo.user.UpdateUserInfoReqBO;
 import cn.cry.mapper.BsUserMapper;
 import cn.cry.po.BsUser;
 import cn.cry.service.UserService;
 import cn.cry.utils.BaseRspUtils;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +62,17 @@ public class UserServiceImp implements UserService {
             return BaseRspUtils.createSuccessRsp("删除用户成功");
         }
         return BaseRspUtils.createErrorRsp("删除失败");
+    }
+
+    @Override
+    public Rsp updateUser(UpdateUserInfoReqBO user) {
+        System.out.println("修改用户信息入参="+ JSONObject.toJSONString(user));
+        BsUser po = new BsUser();
+        BeanUtils.copyProperties(user,po);
+        int i = userMapper.updateByPrimaryKeySelective(po);
+        if (i>0) {
+            return BaseRspUtils.createSuccessRsp("修改用户成功");
+        }
+        return BaseRspUtils.createErrorRsp("修改失败");
     }
 }

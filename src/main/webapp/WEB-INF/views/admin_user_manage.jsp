@@ -27,7 +27,7 @@
         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
     </div>
 </script>
-
+<%-- toolbar 对应的模板--%>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -40,7 +40,7 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-
+            $ = layui.jquery
         table.render({
             elem: '#test'//id选择器，选择表格id为test的对象
             ,url:'${pageContext.request.contextPath}/qryUserList'
@@ -106,21 +106,85 @@
             //console.log(obj)
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
+                   /* obj.del();//删除对应行（tr）的DOM结构，并更新缓存
+                    layer.close(index);*/
+                    //向服务端发送删除指令
+                    $.ajax({
+                        url: '${pageContext.request.contextPath}/deleteUser',
+                        type: "POST",
+                        data:{"userId":data.userId},
+                        success: function (res) {
+                            console.log(res)
+                            if (res.rspCode = "0000") {
+                                //删除这一行
+                                obj.del();
+                                //关闭弹框
+                                layer.close(index);
+                                layer.msg("删除成功", {icon: 6});
+                                //删除成功重新调查询接口，刷新表单
+                                table.reload('test',{});
+                            } else {
+                                layer.msg("删除失败", {icon: 5});
+                            }
+                        }
+                    });
+                    return false;
                 });
             } else if(obj.event === 'edit'){
-                layer.prompt({
+              /*  layer.prompt({
                     formType: 2
                     ,value: data.userName
                 }, function(value, index){
                     obj.update({
                         userName: value
+                        ,
                     });
                     layer.close(index);
+                });*/
+                layer.open({
+                    type: 2,
+                    title: '修改用户信息',
+                    maxmin: true,
+                    area: ['420px', '330px'],
+                    shadeClose: false, //点击遮罩关闭
+                    content: '${pageContext.request.contextPath}/adminUserEdit',
+                    success:function (layero,index) {
+                        //子窗口的body
+                        var  body = layer.getChildFrame('body',index);
+                        body.find("input[name=userName]").val(data.userName);
+                        body.find("input[name=password]").val(data.password);
+                        body.find("input[name=userId]").val(data.userId);
+                        body.find("input[name=sex]").val(data.sex);
+
+                    }
                 });
+
             }
         });
+        //有关重载
+        var $ = layui.$, active = {
+            reload: function () {
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('idTest', {
+                    where: {
+                        key: {
+                            field: demoReload.val()
+                        }
+                    }
+                });
+            }
+        };
+       /* $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        // 刷新表格
+        $('#btn-refresh').on('click', function () {
+            tableIns.reload()
+        });*/
     });
 </script>
 

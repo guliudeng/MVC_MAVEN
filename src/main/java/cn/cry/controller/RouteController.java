@@ -12,4 +12,13 @@ public class RouteController {
     public String adminUserManage(){
         return "admin_user_manage";
     }
+
+    /**
+     * 编辑用户
+     * @return
+     */
+    @RequestMapping("adminUserEdit")
+    public String adminUserEdit(){
+        return "admin_user_edit";
+    }
 }
