@@ -117,5 +117,14 @@ public class LoginController {
         return "login";
     }
 
+    /**
+     * 注销
+     */
+    @RequestMapping("loginOut")
+    public String loginOut(Model model){
+        //将用户信息从session中删除
+        model.addAttribute("userInfo",null);
+        return "forward:/login";
+    }
 
 }

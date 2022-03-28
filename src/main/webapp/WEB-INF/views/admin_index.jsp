@@ -44,7 +44,7 @@
                 <dl class="layui-nav-child">
                     <dd><a href="">个人信息</a></dd>
                     <dd><a href="">设置</a></dd>
-                    <dd><a href="">注销</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/loginOut">注销</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
