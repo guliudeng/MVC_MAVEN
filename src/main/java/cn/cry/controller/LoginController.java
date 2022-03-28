@@ -109,6 +109,12 @@ public class LoginController {
         if (bsUser != null) {
             //登录成功，将用户信息存到session域中,只要key和session注解上设置的一致，就会将值写入session域中
             model.addAttribute("userInfo",userInfoBO);
+            if (RoleConstant.STUDENT_ROLE.equals(bsUser.getRole())) {
+                return "forward:/userIndex";
+            }
+            if (RoleConstant.ADMIN_ROLE.equals(bsUser.getRole())) {
+                return "forward:/shopIndex";
+            }
             return "forward:/adminIndex";
         }else {
             //登录失败将提示信息写道模型数据里，给JSP页面获取渲染
