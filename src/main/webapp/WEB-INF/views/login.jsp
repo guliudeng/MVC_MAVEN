@@ -43,6 +43,7 @@
     <div class="admin-login-background">
         <div class="layui-form login-form">
             <form class="layui-form" action="${pageContext.request.contextPath}/loginIn">
+                <p><font color="#dc143c">${msg}</font></p>
                 <div class="layui-form-item logo-title">
                     <h1>登录</h1>
                 </div>
