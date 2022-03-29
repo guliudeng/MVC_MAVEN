@@ -22,4 +22,7 @@ public interface BsUserMapper {
     BsUser qryNameAndPassword(@Param("username") String username, @Param("password") String password);
 
     List<BsUser> selectUserList();
+
+    List<BsUser> selectShop();
+
 }

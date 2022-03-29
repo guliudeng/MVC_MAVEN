@@ -48,4 +48,22 @@ public class RouteController {
     public String shopIndex(){
         return "shop_index";
     }
+
+    /**
+     * 商家展示页面
+     * @return
+     */
+    @RequestMapping("shopShow")
+    public String shopShow(){
+        return "shop_show";
+    }
+
+    /**
+     * 商家商品管理页面
+     * @return
+     */
+    @RequestMapping("shopProductManage")
+    public String shopProductManage(){
+        return "shop_product_manage";
+    }
 }

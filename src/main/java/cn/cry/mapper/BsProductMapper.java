@@ -2,6 +2,8 @@ package cn.cry.mapper;
 
 import cn.cry.po.BsProduct;
 
+import java.util.List;
+
 public interface BsProductMapper {
     int deleteByPrimaryKey(Integer productId);
 
@@ -14,4 +16,6 @@ public interface BsProductMapper {
     int updateByPrimaryKeySelective(BsProduct record);
 
     int updateByPrimaryKey(BsProduct record);
+
+    List<BsProduct> selectShopProduct(BsProduct po);
 }

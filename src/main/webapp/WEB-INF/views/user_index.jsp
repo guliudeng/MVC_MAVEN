@@ -44,7 +44,7 @@
                 <dl class="layui-nav-child">
                     <dd><a href="">个人信息</a></dd>
                     <dd><a href="">设置</a></dd>
-                    <dd><a href="">注销</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/loginOut">注销</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -60,7 +60,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
 <%--                <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>--%>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userShopIndex" target="option" >商铺展示</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/shopShow" target="option" >商铺展示</a></li>
                 <li class="layui-nav-item"><a href="">订单中心</a></li>
                <%-- <li class="layui-nav-item ">
                     <a class="" href="javascript:;">订单中心</a>

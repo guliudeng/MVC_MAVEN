@@ -42,9 +42,9 @@
                     ${sessionScope.userInfo.userName}
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">个人信息</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/shopShow" target="option">个人信息</a></dd>
                     <dd><a href="">设置</a></dd>
-                    <dd><a href="">注销</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/loginOut">注销</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -60,7 +60,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <%--                <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>--%>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userShopIndex" target="option" >商品管理</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/shopProductManage" target="option" >商品管理</a></li>
                 <li class="layui-nav-item"><a href="">订单中心</a></li>
                 <%-- <li class="layui-nav-item ">
                      <a class="" href="javascript:;">订单中心</a>
@@ -89,36 +89,6 @@
         <div style="padding: 15px;">
             内容主体区域
             <iframe id="option" name="option" src="" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="100%"></iframe>
-            <%--<br><br>
-
-            <blockquote class="layui-elem-quote layui-text">
-                <ul>
-
-
-                    <!--<li>
-                      该页面只是简单的管理系统的界面基础布局示例，并不是一整套界面布局方案，您可以关注基于 layui 的通用型管理系统界面模板解决方案：
-                      <a href="/layuiadmin/" target="_blank" class="layui-btn">layuiAdmin</a>
-                    </li>-->
-                    <li>
-                        layui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面需求。
-                        <br>layui 管理基本布局， 致力于让每一位开发者都能轻松搭建自己的管理系统模板。
-                    </li>
-                </ul>
-            </blockquote>
-
-            <br><br><br>
-
-            <div class="layui-card layui-panel">
-                <div class="layui-card-header">
-                    下面是充数内容，为的是出现滚动条
-                </div>
-                <div class="layui-card-body">
-                    充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>你还真滑到了底部呀
-                </div>
-            </div>
-            <br><br>--%>
-
-
 
         </div>
     </div>
@@ -159,6 +129,13 @@
         //路由映射,点击菜单将菜单所对应的路由传给iframe
         $(function () {
             $('.layui-nav-item a').on("click",function () {
+                var address =$(this).attr("href");
+                $("iframe").attr("src",address);
+            })
+        })
+
+        $(function () {
+            $('.layui-nav-child a').on("click",function () {
                 var address =$(this).attr("href");
                 $("iframe").attr("src",address);
             })
