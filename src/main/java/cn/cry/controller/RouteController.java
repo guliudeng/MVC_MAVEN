@@ -66,4 +66,22 @@ public class RouteController {
     public String shopProductManage(){
         return "shop_product_manage";
     }
+
+    /**
+     * 用户个人信息页面
+     * @return
+     */
+    @RequestMapping("uInfo")
+    public String uInfo(){
+        return "user_info";
+    }
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    @RequestMapping("userInfoUpdate")
+    public String userInfoUpdate(){
+        return "user_info_update";
+    }
 }

@@ -42,9 +42,9 @@
                     ${sessionScope.userInfo.userName}
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${pageContext.request.contextPath}/shopShow" target="option">个人信息</a></dd>
-                    <dd><a href="">设置</a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/loginOut">注销</a></dd>
+                    <dd id="look"><a href="${pageContext.request.contextPath}/uInfo" target="option">个人信息</a></dd>
+                    <dd id="setInfo"><a href="${pageContext.request.contextPath}/userInfoUpdate" target="option">设置</a></dd>
+                    <dd id="out"><a href="${pageContext.request.contextPath}/loginOut">注销</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -135,9 +135,10 @@
         })
 
         $(function () {
-            $('.layui-nav-child a').on("click",function () {
-                var address =$(this).attr("href");
-                $("iframe").attr("src",address);
+                //ifrmae形式
+                $('.layui-nav-child a').on("click",function () {
+                     var address =$(this).attr("href");
+                     $("iframe").attr("src",address);
             })
         })
     });

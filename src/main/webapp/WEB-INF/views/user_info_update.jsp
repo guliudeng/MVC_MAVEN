@@ -10,10 +10,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>注册页面</title>
+    <title>修改用户信息</title>
     <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/MVC_MAVEN/static/layui/layui.js"></script>
-<%--    <script type="text/javascript" src="/MVC_MAVEN/static/layui/layui.all.js"></script>--%>
+    <%--    <script type="text/javascript" src="/MVC_MAVEN/static/layui/layui.all.js"></script>--%>
     <link rel="stylesheet" href="/MVC_MAVEN/static/layui/css/layui.css" />
 </head>
 
@@ -22,43 +22,46 @@
     <div class="layui-col-md6">
         <div class="layui-card">
             <div class="layui-card-body">
-                <form class="layui-form" action="${pageContext.request.contextPath}/registIn" method="post">
+                <form class="layui-form" >
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Id</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="userId" id="userId"    value="${sessionScope.userInfo.userId}" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
-                            <input type="text" name="userName" id="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" onblur="isExist()"><p><font color="red">${msg}</font></p>
+                            <input type="text" name="userName" id="userName"    placeholder="${sessionScope.userInfo.userName}" autocomplete="off" class="layui-input" onblur="isExist()"><p><font color="red">${msg}</font></p>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="password"   placeholder="${sessionScope.userInfo.password}" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">性别</label>
-                            <div class="layui-input-block">
-                                <input type="radio" name="sex" value="男" title="男" checked>
-                                <input type="radio" name="sex" value="女" title="女" >
-                            </div>
-                        </div>
                     <div class="layui-form-item">
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sex" placeholder="${sessionScope.userInfo.sex}" title="男">
+                        </div>
+                    </div>
+                    <%--<div class="layui-form-item">
                         <label class="layui-form-label">年龄</label>
                         <div class="layui-input-block">
-                            <input type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+                            <input type="text" name="age" required   placeholder="请输入年龄" autocomplete="off" class="layui-input">
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="layui-form-item">
                         <label class="layui-form-label">角色</label>
                         <div class="layui-input-block">
-                            <input type="radio" name="role" value="学生" title="学生" checked="">
-                            <input type="radio" name="role" value="商家" title="商家">
-                            <input type="radio" name="role" value="管理员" title="管理员" disabled="">
+                            <p>${sessionScope.userInfo.role}</p>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="upInfo()">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
@@ -92,6 +95,22 @@
             },
             error:function () {
 
+            }
+        })
+    }
+    
+    function upInfo() {
+        var $ = layui.jquery
+        $.ajax({
+            url:'${pageContext.request.contextPath}/updateUser'
+            ,type:"POST"
+            ,data:JSON.stringify({"userName":'#userName'.val,"password":'#password'.val})
+            ,contentType:"application/json"
+            ,success: function (res) {
+                alert(success)
+            },
+            error:function (res) {
+                alert(error)
             }
         })
     }
