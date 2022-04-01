@@ -54,6 +54,7 @@ public class UserServiceImp implements UserService {
      */
     @Override
     public Rsp deleteUser(Integer userId) {
+        System.out.println("删除用户入参Id="+userId);
         BsUser bsUser = new BsUser();
         bsUser.setUserId(userId);
         bsUser.setDeleteFlag("1");
