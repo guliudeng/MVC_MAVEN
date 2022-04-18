@@ -19,6 +19,17 @@
 <body>
 
 <table class="layui-hide "  id="test" lay-filter="test"></table>
+<%--覆盖原有layui样式，完全显示图片--%>
+<style type="text/css">
+    .layui-table-cell{
+        text-align:center;
+        height: auto;
+        white-space: normal;
+    }
+    .layui-table img{
+        max:300px
+    }
+</style>
 
 <%--<script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -36,6 +47,7 @@
     <img src="{{d.productPhoto}}" style="width: 108px;height: 100px">
 </script>
 
+
 <script src="${pageContext.request.contextPath}/static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 
@@ -43,6 +55,7 @@
     layui.use('table', function(){
         var table = layui.table;
         $ = layui.jquery
+
         table.render({
             elem: '#test'//id选择器，选择表格id为test的对象
             ,url:'${pageContext.request.contextPath}/qryProduct'
@@ -66,7 +79,7 @@
                 {field:'productId', width:80, title: 'ID', sort: true}
                 ,{field:'productName', width:100, title: '商品名称'}
                 ,{field:'productPrice', width:80, title: '商品价格'}
-                ,{field:'productPhoto', width:80,   title: '图片', templet:"#imgtmp"}
+                ,{field:'productPhoto',  title: '图片', templet:"#imgtmp"}
                 // ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 ,{field:'productType', width:100,title: '商品类型'}
                 ,{field:'productStatus',width:100, title: '商品状态'}
