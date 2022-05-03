@@ -61,7 +61,7 @@
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <%--                <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>--%>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/shopProductManage" target="option" >商品管理</a></li>
-                <li class="layui-nav-item"><a href="">订单中心</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/shopOrderIndex" target="option">订单中心</a></li>
                 <li class="layui-nav-item"><a href="">订单监控</a></li>
                 <li class="layui-nav-item"><a href="">配送人员管理</a></li>
                 <%-- <li class="layui-nav-item ">

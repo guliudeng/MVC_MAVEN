@@ -26,7 +26,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">Id</label>
                         <div class="layui-input-block">
-                            <input type="text" name="userId" id="userId"    value="${sessionScope.userInfo.userId}" autocomplete="off" class="layui-input" >
+                            <input type="text" name="userId" id="userId"    value="${sessionScope.userInfo.userId}" readonly = "true" autocomplete="off" class="layui-input" >
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -100,11 +100,18 @@
     }
     
     function upInfo() {
+        var infoList = {
+            "userId": ${sessionScope.userInfo.userId},
+            "sex":#sex.val,
+            "userName":#userName.val,
+            "password":#password.val
+        }
+        console.log(infoList)
         var $ = layui.jquery
         $.ajax({
             url:'${pageContext.request.contextPath}/updateUser'
             ,type:"POST"
-            ,data:JSON.stringify({"userName":'#userName'.val,"password":'#password'.val})
+            ,data:JSON.stringify(infoList)
             ,contentType:"application/json"
             ,success: function (res) {
                 alert(success)

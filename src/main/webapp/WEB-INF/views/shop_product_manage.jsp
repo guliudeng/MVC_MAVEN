@@ -31,15 +31,13 @@
     }
 </style>
 
-<%--<script type="text/html" id="toolbarDemo">
+<script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
     </div>
-</script>--%>
-<%-- toolbar 对应的模板--%>
+</script>
 <script type="text/html" id="barDemo">
+
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -97,6 +95,29 @@
         table.on('toolbar(test)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
             switch(obj.event){
+                case 'add':
+                    var data = checkStatus.data;
+                   // layer.alert("添加商品");
+                    layer.open({
+                        type: 2,
+                        title: '添加商品信息',
+                        maxmin: true,
+                        area: ['420px', '530px'],
+                        shadeClose: false, //点击遮罩关闭
+                        content: '${pageContext.request.contextPath}/addProduct'
+                      /*  success:function (layero,index) {
+                            //子窗口的body
+                            var  body = layer.getChildFrame('body',index);
+                            body.find("input[name=productId]").val(data.productId);
+                            body.find("input[name=productName]").val(data.productName);
+                            body.find("input[name=productPrice]").val(data.productPrice);
+                            body.find("input[name=productPhoto]").val(data.productPhoto);
+                            body.find("input[name=productType]").val(data.productType);
+                            body.find("input[name=productStatus]").val(data.productStatus);
+
+                        }*/
+                    });
+                    break;
                 case 'getCheckData':
                     var data = checkStatus.data;
                     layer.alert(JSON.stringify(data));
@@ -125,9 +146,9 @@
                      layer.close(index);*/
                     //向服务端发送删除指令
                     $.ajax({
-                        url: '${pageContext.request.contextPath}/deleteUser',
+                        url: '${pageContext.request.contextPath}/deleteProduct',
                         type: "POST",
-                        data:{"userId":data.userId},
+                        data:{"productId":data.productId},
                         success: function (res) {
                             console.log(res)
                             if (res.rspCode = "0000") {
@@ -158,18 +179,20 @@
                   });*/
                 layer.open({
                     type: 2,
-                    title: '修改用户信息',
+                    title: '修改商品信息',
                     maxmin: true,
-                    area: ['420px', '330px'],
+                    area: ['420px', '530px'],
                     shadeClose: false, //点击遮罩关闭
-                    content: '${pageContext.request.contextPath}/adminUserEdit',
+                    content: '${pageContext.request.contextPath}/editProduct',
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
-                        body.find("input[name=userName]").val(data.userName);
-                        body.find("input[name=password]").val(data.password);
-                        body.find("input[name=userId]").val(data.userId);
-                        body.find("input[name=sex]").val(data.sex);
+                        body.find("input[name=productId]").val(data.productId);
+                        body.find("input[name=productName]").val(data.productName);
+                        body.find("input[name=productPrice]").val(data.productPrice);
+                        body.find("input[name=productPhoto]").val(data.productPhoto);
+                        body.find("input[name=productType]").val(data.productType);
+                        body.find("input[name=productStatus]").val(data.productStatus);
 
                     }
                 });

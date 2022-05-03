@@ -4,6 +4,7 @@ import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
 import cn.cry.bo.product.AddProductReqBO;
 import cn.cry.bo.product.QryShopProductReqBO;
+import cn.cry.bo.product.UpdateProductReqBO;
 
 public interface ProductService {
     /**
@@ -23,4 +24,18 @@ public interface ProductService {
      * @return
      */
     RspList qryShopProduct(QryShopProductReqBO reqBO);
+
+    /**
+     * 修改商品信息
+     * @param reqBO
+     * @return
+     */
+    Rsp updateProduct(UpdateProductReqBO reqBO);
+
+    /**
+     * 删除商品
+     * @param productId
+     * @return
+     */
+    Rsp deleteProduct(Integer productId);
 }

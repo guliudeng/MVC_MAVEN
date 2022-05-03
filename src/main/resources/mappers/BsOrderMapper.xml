@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cry.mapper.BsOrderMapper">
+  <resultMap id="BaseResultMap" type="cn.cry.po.BsOrder">
+    <!--@mbg.generated-->
+    <!--@Table bs_order-->
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
+    <result column="order_sum_price" jdbcType="DECIMAL" property="orderSumPrice" />
+    <result column="order_address" jdbcType="VARCHAR" property="orderAddress" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="tran_time" jdbcType="VARCHAR" property="tranTime" />
+    <result column="finish_time" jdbcType="VARCHAR" property="finishTime" />
+    <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_id, tenant_id, user_name, user_phone, user_id, order_status, product_id, product_name, 
+    product_price, product_num, order_sum_price, order_address, create_time, tran_time, 
+    finish_time, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from bs_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from bs_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="order_id" keyProperty="orderId" parameterType="cn.cry.po.BsOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bs_order (tenant_id, user_name, user_phone, 
+      user_id, order_status, product_id, 
+      product_name, product_price, product_num, 
+      order_sum_price, order_address, create_time, 
+      tran_time, finish_time, delete_flag
+      )
+    values (#{tenantId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{orderStatus,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, 
+      #{orderSumPrice,jdbcType=DECIMAL}, #{orderAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{tranTime,jdbcType=VARCHAR}, #{finishTime,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="order_id" keyProperty="orderId" parameterType="cn.cry.po.BsOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bs_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="orderSumPrice != null">
+        order_sum_price,
+      </if>
+      <if test="orderAddress != null">
+        order_address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="tranTime != null">
+        tran_time,
+      </if>
+      <if test="finishTime != null">
+        finish_time,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderSumPrice != null">
+        #{orderSumPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAddress != null">
+        #{orderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranTime != null">
+        #{tranTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null">
+        #{finishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cry.po.BsOrder">
+    <!--@mbg.generated-->
+    update bs_order
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderSumPrice != null">
+        order_sum_price = #{orderSumPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAddress != null">
+        order_address = #{orderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranTime != null">
+        tran_time = #{tranTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cry.po.BsOrder">
+    <!--@mbg.generated-->
+    update bs_order
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      product_num = #{productNum,jdbcType=INTEGER},
+      order_sum_price = #{orderSumPrice,jdbcType=DECIMAL},
+      order_address = #{orderAddress,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      tran_time = #{tranTime,jdbcType=VARCHAR},
+      finish_time = #{finishTime,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <select id="selectActive" parameterType="cn.cry.po.BsOrder" resultMap="BaseResultMap">
+   select
+    <include refid="Base_Column_List" />
+    from bs_order
+    where delete_flag = "0"
+    <if test="userName != null and userName != ''">
+    and  user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userPhone != null and userPhone != ''">
+    and  user_phone = #{userPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="productName != null and productName != ''">
+    and product_name = #{productName,jdbcType=VARCHAR}
+    </if>
+    <if test="userId != null">
+    and user_id = #{userId,jdbcType=INTEGER}
+    </if>
+    <if test="tenantId != null and tenantId != ''">
+    and tenant_id = #{tenantId,jdbcType=VARCHAR}
+    </if>
+</select>
+</mapper>

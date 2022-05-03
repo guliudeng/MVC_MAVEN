@@ -85,4 +85,49 @@ public class RouteController {
     public String userInfoUpdate(){
         return "user_info_update";
     }
+
+    /**
+     * 编辑商品
+     * @return
+     */
+    @RequestMapping("editProduct")
+    public String editProduct(){
+        return "edit_product";
+    }
+
+    /**
+     * 添加商品
+     * @return
+     */
+    @RequestMapping("addProduct")
+    public String addProduct(){
+        return "add_product";
+    }
+
+    /**
+     * 用户订单主页
+     * @return
+     */
+    @RequestMapping("userOrderIndex")
+    public String userOrderIndex(){
+        return "user_order_index";
+    }
+
+    /**
+     * 管理员订单主页
+     * @return
+     */
+    @RequestMapping("adminOrderIndex")
+    public String adminOrderIndex(){
+        return "admin_order_index";
+    }
+
+    /**
+     * 商家订单主页
+     * @return
+     */
+    @RequestMapping("shopOrderIndex")
+    public String shopOrderIndex(){
+        return "shop_order_index";
+    }
 }
