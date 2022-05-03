@@ -61,7 +61,8 @@
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
 <%--                <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>--%>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/shopShow" target="option" >商铺展示</a></li>
-                <li class="layui-nav-item"><a href="">订单中心</a></li>
+                <li class="layui-nav-item"><a href="">我的订单</a></li>
+                <li class="layui-nav-item"><a href="">我的购物车</a></li>
                <%-- <li class="layui-nav-item ">
                     <a class="" href="javascript:;">订单中心</a>
                     <dl class="layui-nav-child">

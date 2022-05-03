@@ -61,7 +61,10 @@
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath}/adminUserManage" target="option">用户管理</a></li>
                 <li class="layui-nav-item"><a href="javascript:;" >商铺管理</a></li>
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item"><a href="javascript:;" >订单中心</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" >订单监控</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" >配送人员列表</a></li>
+               <%-- <li class="layui-nav-item ">
                     <a class="" href="javascript:;">订单中心</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">menu 1</a></dd>
@@ -69,15 +72,15 @@
                         <dd><a href="javascript:;">menu 3</a></dd>
                         <dd><a href="">the links</a></dd>
                     </dl>
-                </li>
-                <li class="layui-nav-item">
+                </li>--%>
+               <%-- <li class="layui-nav-item">
                     <a href="javascript:;">菜单管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">list 1</a></dd>
                         <dd><a href="javascript:;">list 2</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
-                </li>
+                </li>--%>
 
             </ul>
         </div>
