@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cry.mapper.BsWaiMaiMapper">
+  <resultMap id="BaseResultMap" type="cn.cry.po.BsWaiMai">
+    <!--@mbg.generated-->
+    <!--@Table bs_wai_mai-->
+    <id column="wai_mai_id" jdbcType="INTEGER" property="waiMaiId" />
+    <result column="wai_mai_name" jdbcType="VARCHAR" property="waiMaiName" />
+    <result column="wai_mai_phone" jdbcType="VARCHAR" property="waiMaiPhone" />
+    <result column="wai_mai_address" jdbcType="VARCHAR" property="waiMaiAddress" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    wai_mai_id, wai_mai_name, wai_mai_phone, wai_mai_address, tenant_id, delete_flag, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from bs_wai_mai
+    where wai_mai_id = #{waiMaiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from bs_wai_mai
+    where wai_mai_id = #{waiMaiId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="wai_mai_id" keyProperty="waiMaiId" parameterType="cn.cry.po.BsWaiMai" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bs_wai_mai (wai_mai_name, wai_mai_phone, wai_mai_address, 
+      tenant_id, delete_flag, create_time
+      )
+    values (#{waiMaiName,jdbcType=VARCHAR}, #{waiMaiPhone,jdbcType=VARCHAR}, #{waiMaiAddress,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="wai_mai_id" keyProperty="waiMaiId" parameterType="cn.cry.po.BsWaiMai" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bs_wai_mai
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="waiMaiName != null">
+        wai_mai_name,
+      </if>
+      <if test="waiMaiPhone != null">
+        wai_mai_phone,
+      </if>
+      <if test="waiMaiAddress != null">
+        wai_mai_address,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="waiMaiName != null">
+        #{waiMaiName,jdbcType=VARCHAR},
+      </if>
+      <if test="waiMaiPhone != null">
+        #{waiMaiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="waiMaiAddress != null">
+        #{waiMaiAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cry.po.BsWaiMai">
+    <!--@mbg.generated-->
+    update bs_wai_mai
+    <set>
+      <if test="waiMaiName != null">
+        wai_mai_name = #{waiMaiName,jdbcType=VARCHAR},
+      </if>
+      <if test="waiMaiPhone != null">
+        wai_mai_phone = #{waiMaiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="waiMaiAddress != null">
+        wai_mai_address = #{waiMaiAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wai_mai_id = #{waiMaiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cry.po.BsWaiMai">
+    <!--@mbg.generated-->
+    update bs_wai_mai
+    set wai_mai_name = #{waiMaiName,jdbcType=VARCHAR},
+      wai_mai_phone = #{waiMaiPhone,jdbcType=VARCHAR},
+      wai_mai_address = #{waiMaiAddress,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where wai_mai_id = #{waiMaiId,jdbcType=INTEGER}
+  </update>
+  <select id="selectActive" parameterType="cn.cry.po.BsWaiMai" resultMap="BaseResultMap">
+   select
+    <include refid="Base_Column_List" />
+    from bs_wai_mai
+    where delete_flag = "0"
+    <if test="waiMaiName != null and waiMaiName != ''">
+    and wai_mai_name = #{waiMaiName,jdbcType=VARCHAR}
+    </if>
+    <if test="waiMaiPhone != null and waiMaiPhone != ''">
+    and wai_mai_phone = #{waiMaiPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="tenantId != null and tenantId != ''">
+    and tenant_id = #{tenantId,jdbcType=VARCHAR}
+    </if>
+</select>
+</mapper>

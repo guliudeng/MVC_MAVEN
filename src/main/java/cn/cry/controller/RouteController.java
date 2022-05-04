@@ -130,4 +130,22 @@ public class RouteController {
     public String shopOrderIndex(){
         return "shop_order_index";
     }
+
+    /**
+     * 商家外卖人员管理
+     * @return
+     */
+    @RequestMapping("shopWaiMaiManage")
+    public String shopWaiMaiManage(){
+        return "shop_wai_mai_manage";
+    }
+
+    /**
+     * 管理员外卖人员查看
+     * @return
+     */
+    @RequestMapping("adminWaiMaiManage")
+    public String adminWaiMaiManage(){
+        return "admin_wai_mai_manage";
+    }
 }

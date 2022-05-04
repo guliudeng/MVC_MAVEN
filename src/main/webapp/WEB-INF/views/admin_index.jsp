@@ -63,7 +63,7 @@
                 <li class="layui-nav-item"><a href="javascript:;" >商铺管理</a></li>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/adminOrderIndex" target="option" >订单中心</a></li>
                 <li class="layui-nav-item"><a href="javascript:;" >订单监控</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" >配送人员列表</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/adminWaiMaiManage" target="option" >配送人员列表</a></li>
                <%-- <li class="layui-nav-item ">
                     <a class="" href="javascript:;">订单中心</a>
                     <dl class="layui-nav-child">
