@@ -100,11 +100,11 @@
                     // layer.alert("添加商品");
                     layer.open({
                         type: 2,
-                        title: '添加商品信息',
+                        title: '添加配送人员信息',
                         maxmin: true,
                         area: ['420px', '530px'],
                         shadeClose: false, //点击遮罩关闭
-                        content: '${pageContext.request.contextPath}/addProduct'
+                        content: '${pageContext.request.contextPath}/addWaiMai'
                         /*  success:function (layero,index) {
                               //子窗口的body
                               var  body = layer.getChildFrame('body',index);
@@ -146,9 +146,9 @@
                      layer.close(index);*/
                     //向服务端发送删除指令
                     $.ajax({
-                        url: '${pageContext.request.contextPath}/deleteProduct',
+                        url: '${pageContext.request.contextPath}/deleteWaiMai',
                         type: "POST",
-                        data:{"productId":data.productId},
+                        data:{"waiMaiId":data.waiMaiId},
                         success: function (res) {
                             console.log(res)
                             if (res.rspCode = "0000") {
@@ -179,21 +179,18 @@
                   });*/
                 layer.open({
                     type: 2,
-                    title: '修改商品信息',
+                    title: '修改信息',
                     maxmin: true,
-                    area: ['420px', '530px'],
+                    area: ['420px', '450px'],
                     shadeClose: false, //点击遮罩关闭
-                    content: '${pageContext.request.contextPath}/editProduct',
+                    content: '${pageContext.request.contextPath}/editWaiMai',
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
-                        body.find("input[name=productId]").val(data.productId);
-                        body.find("input[name=productName]").val(data.productName);
-                        body.find("input[name=productPrice]").val(data.productPrice);
-                        body.find("input[name=productPhoto]").val(data.productPhoto);
-                        body.find("input[name=productType]").val(data.productType);
-                        body.find("input[name=productStatus]").val(data.productStatus);
-
+                        body.find("input[name=waiMaiId]").val(data.waiMaiId);
+                        body.find("input[name=waiMaiName]").val(data.waiMaiName);
+                        body.find("input[name=waiMaiPhone]").val(data.waiMaiPhone);
+                        body.find("input[name=waiMaiAddress]").val(data.waiMaiAddress);
                     }
                 });
 

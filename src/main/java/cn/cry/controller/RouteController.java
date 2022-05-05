@@ -148,4 +148,22 @@ public class RouteController {
     public String adminWaiMaiManage(){
         return "admin_wai_mai_manage";
     }
+
+    /**
+     * 添加外卖人员
+     * @return
+     */
+    @RequestMapping("addWaiMai")
+    public String addWaiMai(){
+        return "add_wai_mai";
+    }
+
+    /**
+     * 编辑外卖人员
+     * @return
+     */
+    @RequestMapping("editWaiMai")
+    public String editWaiMai(){
+        return "edit_wai_mai";
+    }
 }

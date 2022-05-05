@@ -1,12 +1,19 @@
 package cn.cry.controller;
 
+import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
 import cn.cry.bo.order.QueryOrderReqBO;
+import cn.cry.bo.product.AddProductReqBO;
+import cn.cry.bo.product.UpdateProductReqBO;
+import cn.cry.bo.waiMai.AddWaiMaiReqBO;
 import cn.cry.bo.waiMai.QueryWaiMaiReqBO;
+import cn.cry.bo.waiMai.UpdateWaiMaiReqBO;
 import cn.cry.constant.RoleConstant;
 import cn.cry.po.BsUser;
 import cn.cry.service.WaiMaiService;
+import cn.cry.utils.BaseRspUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -28,5 +35,30 @@ public class WaiMaiController {
                 reqBO.setTenantId(userInfo.getShopCode());
             }
         return  waiMaiService.query(reqBO);
+    }
+    /**
+     * 添加外卖人员
+     * @return
+     */
+    @RequestMapping(value = "addWaiMaiInterface",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Rsp addWaiMaiInterface(@RequestBody AddWaiMaiReqBO reqBO, @SessionAttribute("userInfo") BsUser userInfo ){
+        System.out.println("session="+userInfo);
+        reqBO.setTenantId(userInfo.getShopCode());
+        Rsp rsp = waiMaiService.add(reqBO);
+        return rsp;
+    }
+
+
+    @RequestMapping(value = "updateWaiMai",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Rsp updateWaiMai(@RequestBody UpdateWaiMaiReqBO reqBO) {
+        return waiMaiService.update(reqBO);
+    }
+
+    @RequestMapping(value = "deleteWaiMai",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Rsp deleteWaiMai(Integer waiMaiId) {
+        return waiMaiService.delete(waiMaiId);
     }
 }
