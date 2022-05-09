@@ -66,6 +66,17 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
+    public RspList qryShopUpProduct(String tenantId) {
+        BsProduct product = new BsProduct();
+        product.setTenantId(tenantId);
+        List<BsProduct> productList = bsProductMapper.selectShopProduct(product);
+        if (null != productList && productList.size() > 0) {
+            return BaseRspUtils.createSuccessRspList(productList);
+        }
+        return BaseRspUtils.createErrorRspList("失败");
+    }
+
+    @Override
     public Rsp updateProduct(UpdateProductReqBO reqBO) {
         System.out.println("修改商品信息入参="+reqBO);
         BsProduct po = new BsProduct();

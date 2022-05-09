@@ -26,6 +26,13 @@ public interface ProductService {
     RspList qryShopProduct(QryShopProductReqBO reqBO);
 
     /**
+     * 查询商铺下已上架的商品
+     * @param tenantId
+     * @return
+     */
+    RspList qryShopUpProduct(String  tenantId);
+
+    /**
      * 修改商品信息
      * @param reqBO
      * @return

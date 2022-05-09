@@ -12,10 +12,7 @@ import cn.cry.service.ProductService;
 import cn.cry.utils.BaseRspUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *商品控制器
@@ -73,5 +70,15 @@ public class ProductController {
     @ResponseBody
     public Rsp delete(Integer productId) {
         return productService.deleteProduct(productId);
+    }
+
+    @RequestMapping(value = "qryProductUser",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public RspList qryProductUser(@RequestParam("tenantId") String tenantId){
+        /**
+         * 用户查询商铺下已上架的商铺
+         */
+        RspList rspList = productService.qryShopUpProduct(tenantId);
+        return rspList;
     }
 }

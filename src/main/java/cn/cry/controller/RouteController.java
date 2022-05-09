@@ -166,4 +166,13 @@ public class RouteController {
     public String editWaiMai(){
         return "edit_wai_mai";
     }
+
+    /**
+     * 用户点击商家进入商铺主页
+     * @return
+     */
+    @RequestMapping("userShopProductShow")
+    public String userShopProductShow(){
+        return "user_shop_product_show";
+    }
 }

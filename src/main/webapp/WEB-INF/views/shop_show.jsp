@@ -124,16 +124,17 @@
                     type: 2,
                     title: '修改用户信息',
                     maxmin: true,
-                    area: ['420px', '330px'],
+                    area: ['100%', '100%'],
                     shadeClose: false, //点击遮罩关闭
-                    content: '${pageContext.request.contextPath}/adminUserEdit',
+                    content: '${pageContext.request.contextPath}/userShopProductShow',
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
-                        body.find("input[name=userName]").val(data.userName);
-                        body.find("input[name=password]").val(data.password);
+                        body.find("input[name=tenantId]").val(data.shopCode);
+                        console.log(data.shopCode)
+                       /* body.find("input[name=password]").val(data.password);
                         body.find("input[name=userId]").val(data.userId);
-                        body.find("input[name=sex]").val(data.sex);
+                        body.find("input[name=sex]").val(data.sex);*/
 
                     }
                 });
@@ -155,6 +156,9 @@
                 });
             }
         };
+        function getCode() {
+             return "hh"
+        }
         /* $('.demoTable .layui-btn').on('click', function () {
              var type = $(this).data('type');
              active[type] ? active[type].call(this) : '';
