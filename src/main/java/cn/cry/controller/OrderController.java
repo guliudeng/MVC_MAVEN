@@ -1,6 +1,8 @@
 package cn.cry.controller;
 
+import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
+import cn.cry.bo.order.AddOrderReqBO;
 import cn.cry.bo.order.QueryOrderReqBO;
 import cn.cry.bo.product.QryShopProductReqBO;
 import cn.cry.constant.RoleConstant;
@@ -42,5 +44,22 @@ public class OrderController {
 
         RspList rspList = orderService.query(reqBO);
         return rspList;
+    }
+
+    @RequestMapping(value = "addOrder",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Rsp addOrder(@RequestBody AddOrderReqBO reqBO, @SessionAttribute("userInfo") BsUser userInfo){
+        reqBO.setUserId(userInfo.getUserId());
+        if (StringUtils.isEmpty(reqBO.getUserName())) {
+            reqBO.setUserName(userInfo.getUserName());
+        }
+       if (StringUtils.isEmpty(reqBO.getUserPhone())) {
+           reqBO.setUserPhone(userInfo.getPhone());
+       }
+        reqBO.setOrderSumPrice(reqBO.getProductPrice());
+        reqBO.setProductNum(1);
+
+        Rsp rsp = orderService.add(reqBO);
+        return rsp;
     }
 }

@@ -44,8 +44,8 @@
 </script>--%>
 <script type="text/html" id="barDemo">
 
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">选择</a>
+<%--    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>--%>
 </script>
 <script type="text/html" id="imgtmp">
     <img src="{{d.productPhoto}}" style="width: 108px;height: 100px">
@@ -88,8 +88,8 @@
                     ,{field:'productPhoto',  title: '图片', templet:"#imgtmp"}
                     // ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     ,{field:'productType', width:100,title: '商品类型'}
-                    ,{field:'productStatus',width:100, title: '商品状态'}
-                    ,{field:'createTime',minWidth:150, title: '创建时间'}
+             /*       ,{field:'productStatus',width:100, title: '商品状态'}
+                    ,{field:'createTime',minWidth:150, title: '创建时间'}*/
                     ,{field: 'right' ,width: 178, align:'center', toolbar: '#barDemo'}//添加操作选项
                 ]]
                 ,skin: 'line' //表格风格
@@ -194,16 +194,16 @@
                     maxmin: true,
                     area: ['420px', '530px'],
                     shadeClose: false, //点击遮罩关闭
-                    content: '${pageContext.request.contextPath}/editProduct',
+                    content: '${pageContext.request.contextPath}/userBuyInfo',
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
                         body.find("input[name=productId]").val(data.productId);
                         body.find("input[name=productName]").val(data.productName);
                         body.find("input[name=productPrice]").val(data.productPrice);
-                        body.find("input[name=productPhoto]").val(data.productPhoto);
-                        body.find("input[name=productType]").val(data.productType);
-                        body.find("input[name=productStatus]").val(data.productStatus);
+                       // body.find("input[name=productPhoto]").val(data.productPhoto);
+                        body.find("input[name=tenantId]").val(data.tenantId);
+                       // body.find("input[name=productStatus]").val(data.productStatus);
 
                     }
                 });

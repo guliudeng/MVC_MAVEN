@@ -34,7 +34,7 @@
 
 <script type="text/html" id="barDemo">
 
-    <a class="layui-btn layui-btn-xs" lay-event="edit">更新订单状态</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">去支付</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script type="text/html" id="imgtmp">
@@ -80,6 +80,7 @@
                 ,{field:'userPhone',width:150, title: '用户号码'}
                 ,{field:'orderAddress',width:150, title: '订单地址'}
                 ,{field:'orderStatus',width:80, title: '订单状态'}
+                ,{field:'orderSumPrice',width:80, title: '订单总价'}
                 ,{field:'createTime',minWidth:150, title: '创建时间'}
                 ,{field: 'right' ,width: 178, align:'center', toolbar: '#barDemo'}//添加操作选项
             ]]
@@ -166,6 +167,24 @@
                     return false;
                 });
             } else if(obj.event === 'edit'){
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/zfDemo',
+                    type: "POST",
+                    data:{"id":data.orderId,"price":data.orderSumPrice,"title":data.productName},
+                    success: function (res) {
+                       console.log(res)
+
+                        layer.open({
+                            type: 1,
+                            title: '修改商品信息',
+                            maxmin: true,
+                            area: ['420px', '530px'],
+                            shadeClose: false, //点击遮罩关闭
+                            content: res
+
+                        });
+                    }
+                });
                 /*  layer.prompt({
                       formType: 2
                       ,value: data.userName
@@ -176,7 +195,7 @@
                       });
                       layer.close(index);
                   });*/
-                layer.open({
+               /* layer.open({
                     type: 2,
                     title: '修改商品信息',
                     maxmin: true,
@@ -194,7 +213,7 @@
                         body.find("input[name=productStatus]").val(data.productStatus);
 
                     }
-                });
+                });*/
 
             }
         });

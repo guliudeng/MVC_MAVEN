@@ -175,4 +175,31 @@ public class RouteController {
     public String userShopProductShow(){
         return "user_shop_product_show";
     }
+
+    /**
+     * 支付demo主页
+     * @return
+     */
+    @RequestMapping("zfbIndex")
+    public String zfbIndex(){
+        return "zfb_index";
+    }
+
+    /**
+     * 支付demo主页
+     * @return
+     */
+    @RequestMapping("userBuyInfo")
+    public String userBuyInfo(){
+        return "user_buy_info";
+    }
+
+    /**
+     * 支付页面
+     * @return
+     */
+    @RequestMapping("payIndex")
+    public String payIndex(){
+        return "pay_index";
+    }
 }

@@ -122,7 +122,7 @@
                   });*/
                 layer.open({
                     type: 2,
-                    title: '修改用户信息',
+                    title: '商家商品列表',
                     maxmin: true,
                     area: ['100%', '100%'],
                     shadeClose: false, //点击遮罩关闭

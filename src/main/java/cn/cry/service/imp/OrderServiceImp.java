@@ -41,6 +41,7 @@ public class OrderServiceImp implements OrderService {
         po.setUserId(reqBO.getUserId());
         po.setUserName(reqBO.getUserName());
         po.setUserPhone(reqBO.getUserPhone());
+        po.setTenantId(reqBO.getTenantId());
         int i = bsOrderMapper.insertSelective(po);
         if (i>0 ){
             return BaseRspUtils.createSuccessRsp("订单添加成功");

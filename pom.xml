@@ -85,6 +85,12 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+<!--      支付包支付能力依赖-->
+      <dependency>
+          <groupId>com.alipay.sdk</groupId>
+          <artifactId>alipay-sdk-java</artifactId>
+          <version>4.22.49.ALL</version>
+      </dependency>
 <!--    日志-->
     <dependency>
       <groupId>org.slf4j</groupId>
