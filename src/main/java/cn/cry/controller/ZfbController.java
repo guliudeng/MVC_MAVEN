@@ -18,6 +18,14 @@ public class ZfbController {
     @Autowired
     private AlipayUtil alipayUtil;
 
+    /**
+     * 支付能力接口
+     * @param id 订单id
+     * @param price 订单价格
+     * @param title 订单title
+     * @param model 视图模型
+     * @return
+     */
    @PostMapping("zfDemo")
     public String qryWaiMai(String id, String price, String title, Model model){
        String pay = alipayUtil.pay(id, price, title);

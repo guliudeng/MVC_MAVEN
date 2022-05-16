@@ -45,6 +45,11 @@ public class UserController {
         return JSONObject.toJSONString(rspList);
     }
 
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
     @RequestMapping(value = "deleteUser" ,produces = "text/html; charset=utf-8")
     @ResponseBody
     public String deleteUser(@RequestParam("userId") int userId) {
@@ -53,6 +58,11 @@ public class UserController {
         return JSONObject.toJSONString(rsp);
     }
 
+    /**
+     * 修改用户个人信息
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "updateUser" ,produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String updateUser(@RequestBody UpdateUserInfoReqBO user) {

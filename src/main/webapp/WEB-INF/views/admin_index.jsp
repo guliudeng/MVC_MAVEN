@@ -85,12 +85,9 @@
             </ul>
         </div>
     </div>
-
     <div class="layui-body">
-        <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            内容主体区域
-            <iframe id="option" name="option" src="" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
+            <iframe id="option" name="option" src="" style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="100%"></iframe>
             <%--<br><br>
 
             <blockquote class="layui-elem-quote layui-text">
@@ -124,11 +121,8 @@
 
         </div>
     </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        底部固定区域
-    </div>
+    <%--<div class="layui-footer">
+    </div>--%>
 </div>
 <script src="${pageContext.request.contextPath}/static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
 <script>

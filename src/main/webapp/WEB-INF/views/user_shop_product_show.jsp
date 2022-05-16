@@ -56,7 +56,7 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 
 <script>
-    var  tenantId = "CC"
+    var  tenantId = "HMJMF"
     console.log("tenant="+tenantId)
     layui.use('table', function(){
         var table = layui.table;
@@ -190,7 +190,7 @@
                   });*/
                 layer.open({
                     type: 2,
-                    title: '修改商品信息',
+                    title: '确认订单商品信息',
                     maxmin: true,
                     area: ['420px', '530px'],
                     shadeClose: false, //点击遮罩关闭

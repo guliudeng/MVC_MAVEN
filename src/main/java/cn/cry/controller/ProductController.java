@@ -53,13 +53,6 @@ public class ProductController {
         return rsp;
     }
 
-    @RequestMapping(value = "qryShop" ,produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public RspList qryShop() {
-        RspList rspList = productService.qryShop();
-        return rspList;
-    }
-
     @RequestMapping(value = "updateProduct",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Rsp update(@RequestBody UpdateProductReqBO reqBO) {
@@ -70,6 +63,13 @@ public class ProductController {
     @ResponseBody
     public Rsp delete(Integer productId) {
         return productService.deleteProduct(productId);
+    }
+
+    @RequestMapping(value = "qryShop" ,produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public RspList qryShop() {
+        RspList rspList = productService.qryShop();
+        return rspList;
     }
 
     @RequestMapping(value = "qryProductUser",produces = "application/json;charset=UTF-8")

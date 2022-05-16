@@ -19,6 +19,19 @@
 <body>
 
 <table class="layui-hide "  id="test" lay-filter="test"></table>
+<script type="text/html" id="toolbarDemo">
+    <%-- <div class="layui-btn-container">
+         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+         <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+     </div>--%>
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <input type="text" id="userName" name="userName" class="layui-input" placeholder="输入查询的配送人员" autocomplete="off">
+        </div>
+        <button class="layui-btn layui-btn-md layui-btn-normal" lay-submit lay-filter="queryUser">查询</button>
+    </div>
+</script>
 <%--覆盖原有layui样式，完全显示图片--%>
 <style type="text/css">
     .layui-table-cell{

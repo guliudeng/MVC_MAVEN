@@ -25,6 +25,12 @@ public class WaiMaiController {
     @Resource
     private WaiMaiService waiMaiService;
 
+    /**
+     * 查询配送人员信息
+     * @param reqBO
+     * @param userInfo
+     * @return
+     */
     @RequestMapping(value = "qryWaiMai",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public RspList qryWaiMai(QueryWaiMaiReqBO reqBO, @SessionAttribute("userInfo") BsUser userInfo){
@@ -49,13 +55,22 @@ public class WaiMaiController {
         return rsp;
     }
 
-
+    /**
+     * 修改配送人员
+     * @param reqBO
+     * @return
+     */
     @RequestMapping(value = "updateWaiMai",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Rsp updateWaiMai(@RequestBody UpdateWaiMaiReqBO reqBO) {
         return waiMaiService.update(reqBO);
     }
 
+    /**
+     * 删除配送人员
+     * @param waiMaiId
+     * @return
+     */
     @RequestMapping(value = "deleteWaiMai",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Rsp deleteWaiMai(Integer waiMaiId) {

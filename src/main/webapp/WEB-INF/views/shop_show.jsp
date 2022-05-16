@@ -17,9 +17,16 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-
+<%--查询框--%>
 <table class="layui-hide "  id="test" lay-filter="test"></table>
-
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-form-item">
+        <div class="layui-input-inline">
+            <input type="text" id="userName" name="userName" class="layui-input" placeholder="输入查询商铺名称" autocomplete="off">
+        </div>
+        <button class="layui-btn layui-btn-md layui-btn-normal" lay-submit lay-filter="queryUser">查询</button>
+    </div>
+</script>
 <%--<script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
