@@ -202,4 +202,13 @@ public class RouteController {
     public String payIndex(){
         return "pay_index";
     }
+
+    /**
+     * 修改订单状态
+     * @return
+     */
+    @RequestMapping("shopEditOrder")
+    public String shopEditOrder(){
+        return "shop_edit_order";
+    }
 }

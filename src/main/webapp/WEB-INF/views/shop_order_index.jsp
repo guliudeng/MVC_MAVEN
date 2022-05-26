@@ -191,11 +191,11 @@
                   });*/
                 layer.open({
                     type: 2,
-                    title: '修改商品信息',
+                    title: '修改订单状态',
                     maxmin: true,
                     area: ['420px', '530px'],
                     shadeClose: false, //点击遮罩关闭
-                    content: '${pageContext.request.contextPath}/editProduct',
+                    content: '${pageContext.request.contextPath}/shopEditOrder',
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
