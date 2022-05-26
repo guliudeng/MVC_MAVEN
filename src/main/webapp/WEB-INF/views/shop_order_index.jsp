@@ -199,12 +199,12 @@
                     success:function (layero,index) {
                         //子窗口的body
                         var  body = layer.getChildFrame('body',index);
-                        body.find("input[name=productId]").val(data.productId);
+                        body.find("input[name=orderId]").val(data.orderId);
                         body.find("input[name=productName]").val(data.productName);
                         body.find("input[name=productPrice]").val(data.productPrice);
                         body.find("input[name=productPhoto]").val(data.productPhoto);
                         body.find("input[name=productType]").val(data.productType);
-                        body.find("input[name=productStatus]").val(data.productStatus);
+                        body.find("input[name=orderStatus]").val(data.orderStatus);
 
                     }
                 });

@@ -16,9 +16,9 @@
 <div class="layui-form layuimini-form">
     <%--    隐藏不可以修改id--%>
     <div class="layui-form-item layui-hide">
-        <label class="layui-form-label required">商品ID</label>
+        <label class="layui-form-label required">订单ID</label>
         <div class="layui-input-block">
-            <input type="number" name="productId" value="" class="layui-input">
+            <input type="number" name="orderId" value="" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -48,7 +48,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">订单状态</label>
         <div class="layui-input-block">
-            <input type="text" name="productStatus" placeholder="请输入订单状态" value="" class="layui-input">
+            <input type="text" name="orderStatus" placeholder="请输入订单状态" value="" class="layui-input">
         </div>
     </div>
 
@@ -76,7 +76,7 @@
                 $.ajax({
                     type: "post",
                     dataType: "json",
-                    url: '${pageContext.request.contextPath}/updateProduct',
+                    url: '${pageContext.request.contextPath}/updateOrder',
                     data: data1,
                     contentType: 'application/json;charset=UTF-8',
                     success: function (res) {

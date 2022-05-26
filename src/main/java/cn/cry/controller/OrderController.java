@@ -4,6 +4,7 @@ import cn.cry.bo.base.Rsp;
 import cn.cry.bo.base.RspList;
 import cn.cry.bo.order.AddOrderReqBO;
 import cn.cry.bo.order.QueryOrderReqBO;
+import cn.cry.bo.order.UpdateOrderReqBO;
 import cn.cry.bo.product.QryShopProductReqBO;
 import cn.cry.constant.RoleConstant;
 import cn.cry.po.BsUser;
@@ -61,5 +62,11 @@ public class OrderController {
 
         Rsp rsp = orderService.add(reqBO);
         return rsp;
+    }
+    @RequestMapping(value = "updateOrder",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Rsp updateOrder(@RequestBody UpdateOrderReqBO reqBO) {
+        Rsp update = orderService.update(reqBO);
+        return update;
     }
 }
