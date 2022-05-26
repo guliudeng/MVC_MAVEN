@@ -119,7 +119,7 @@ public class LoginController {
             return "forward:/adminIndex";
         }else {
             //登录失败将提示信息写道模型数据里，给JSP页面获取渲染
-            model.addAttribute("msg","登陆失败，用户名密码不正确");
+            model.addAttribute("msg","登录失败，用户名密码不正确");
         }
         return "login";
     }
